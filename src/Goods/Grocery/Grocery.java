@@ -13,7 +13,7 @@ abstract public class Grocery extends Product implements Comparable<Grocery>
         this(name, price, 0, creationDateTime);
     }
 
-    private Grocery(String name, int price, long serialNumber, LocalDateTime creationDateTime)
+    private Grocery(String name, int price, int serialNumber, LocalDateTime creationDateTime)
     {
         super(name, price, serialNumber, creationDateTime);
     }

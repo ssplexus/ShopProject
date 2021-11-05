@@ -3,6 +3,7 @@ package Shop;
 import Goods.Household.Household;
 
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 
 public class HouseholdShelf extends Shelf<Household>
 {
@@ -21,17 +22,19 @@ public class HouseholdShelf extends Shelf<Household>
         {
             sb.append(i++ +"-" + goods.toString() + " ");
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
 
     public <T extends Household> Household take(Class<T> productClass)
     {
+        if(this.goods.isEmpty())
+            throw new NoSuchElementException();
         for(Household product : this.goods)
         {
             if(productClass.isInstance(product))
                 return super.take(product);
         }
-        return null;
+        throw new NoSuchElementException();
     }
 }
 

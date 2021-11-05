@@ -4,7 +4,7 @@ import Goods.Product;
 
 abstract public class Household extends Product
 {
-    public Household(String name, int price, long serialNumber)
+    public Household(String name, int price, int serialNumber)
     {
         super(name, price, serialNumber, null);
     }

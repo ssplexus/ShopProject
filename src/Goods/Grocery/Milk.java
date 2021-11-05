@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Milk extends Grocery
 {
-    public Milk(int price, long serialNumber, LocalDateTime creationDateTime)
+    public Milk(int price, LocalDateTime creationDateTime)
     {
         super("Milk", price, creationDateTime);
     }

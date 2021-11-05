@@ -7,10 +7,10 @@ abstract public class Product
 {
     protected final String name;
     protected int price;
-    protected final long serialNumber;
+    protected final int serialNumber;
     protected final LocalDateTime creationDateTime;
 
-    public Product(String name, int price, long serialNumber, LocalDateTime creationDateTime)
+    public Product(String name, int price, int serialNumber, LocalDateTime creationDateTime)
     {
         if(name == null || price == 0 || serialNumber == 0 && creationDateTime == null)
             throw new IllegalArgumentException();
