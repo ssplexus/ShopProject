@@ -3,13 +3,23 @@ package Goods;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-abstract public class Product
+/**
+ * Абстрактный класс товара
+ */
+public abstract class Product
 {
-    protected final String name;
-    protected int price;
-    protected final int serialNumber;
-    protected final LocalDateTime creationDateTime;
+    protected final String name; // имя товара
+    protected int price; // цена
+    protected final int serialNumber; // серийный номер (для хоз товаров)
+    protected final LocalDateTime creationDateTime; // дата изготовления (для продуктовых товаров)
 
+    /**
+     * Конструктор товара
+     * @param name - имя
+     * @param price - цена
+     * @param serialNumber - серийный номер (для хоз товаров)
+     * @param creationDateTime - дата изготовления (для продуктовых товаров)
+     */
     public Product(String name, int price, int serialNumber, LocalDateTime creationDateTime)
     {
         if(name == null || price == 0 || serialNumber == 0 && creationDateTime == null)
@@ -29,15 +39,6 @@ abstract public class Product
         return price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public long getSerialNumber()
-    {
-        return serialNumber;
-    }
-
     public LocalDateTime getCreationDateTime()
     {
         return creationDateTime;
@@ -52,6 +53,10 @@ abstract public class Product
         return price == product.price && serialNumber == product.serialNumber && name.equals(product.name) && Objects.equals(creationDateTime, product.creationDateTime);
     }
 
+    /**
+     * Переопределённая функция вычисления хэш
+     * не включена цена, потому что она может меняться
+     */
     @Override
     public int hashCode()
     {

@@ -4,28 +4,45 @@ import Goods.Product;
 
 import java.util.Stack;
 
+/**
+ *  Класс покупателя
+ */
 public class Customer
 {
-    private Stack<Product> cart;
+    // Корзина покупателя
+    private final Stack<Product> cart;
 
+    // Подитог
     private int subTotal;
 
+    /**
+     * Конструктор покупателя
+     */
     public Customer()
     {
         cart = new Stack<>();
         subTotal = 0;
     }
 
+    /**
+     * метод положить товар в корзину
+     * @param product - товар
+     * @return - подитог
+     */
     public int put(Product product)
     {
         if(product != null) subTotal += cart.push(product).getPrice();
         return subTotal;
     }
 
+    /**
+     * Метод покупки
+     * @return - итог
+     */
     public int buy()
     {
         int total = 0;
-        while (!cart.isEmpty())
+        while (!cart.isEmpty()) // выкладываем из корзины пока она не пуста
         {
             total += cart.pop().getPrice();
         }
@@ -43,13 +60,18 @@ public class Customer
         {
             for(Product product: cart)
             {
-                sb.append("[" + product.getName() + "]" + " ");
+                sb.append("[").append(product.getName()).append("]").append(" ");
             }
         }
         return sb.toString();
     }
 
-    public int getSubTotal() {
+    /**
+     * Вывести подитог
+     * @return - подитог
+     */
+    public int getSubTotal()
+    {
         return subTotal;
     }
 }

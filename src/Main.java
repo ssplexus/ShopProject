@@ -9,16 +9,21 @@ import Shop.Customer;
 
 import java.time.LocalDateTime;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Main
 {
     public static void main(String[] args)
     {
+        // Создание магазина
         Shop shop = new Shop();
+        // Создание покупателя
         Customer customer = new Customer();
+
+        // Создание объекта класса взаимодействия магазина и покупателя
         Trade trade = new Trade(shop, customer);
         LocalDateTime dateTime = LocalDateTime.now();
+
+        // Добавление товаров в магазин
 
         shop.add(new Milk(50, dateTime));
         shop.add(new Milk(50, dateTime.plusHours(1)));
@@ -39,13 +44,10 @@ public class Main
         shop.add(new Screwdriver(300, new Random().nextInt(100000)));
         shop.add(new Screwdriver(300, new Random().nextInt(100000)));
 
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println(shop);
-        do
-        {
-        }
-        while (trade.doTrade());
+
+        // Цикл торговли
+        while (trade.doTrade()) {}
 
     }
 }

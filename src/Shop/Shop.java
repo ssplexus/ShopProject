@@ -9,14 +9,19 @@ import Goods.Product;
 
 import java.util.*;
 
+/**
+ *  Класс магазина
+ */
 public class Shop
 {
+    private final GroceryShelf shelfMilk; // Полка с молоком
+    private final GroceryShelf shelfButter; // Полка с маслом
+    private final GroceryShelf shelfBread; // Полка с хлебом
+    private final HouseholdShelf shelfHousehold; // Полка с хозтоварами
 
-    private GroceryShelf shelfMilk;
-    private GroceryShelf shelfButter;
-    private GroceryShelf shelfBread;
-    private HouseholdShelf shelfHousehold;
-
+    /**
+     *  Конструктор магазина
+     */
     public Shop()
     {
 
@@ -26,6 +31,10 @@ public class Shop
         shelfHousehold = new HouseholdShelf("Household");
     }
 
+    /**
+     * Метод добавления продуктов в магазин
+     * @param product - продукт для добавления
+     */
     public void add(Product product)
     {
         switch (product.getClass().getSimpleName())
@@ -44,6 +53,12 @@ public class Shop
         }
     }
 
+    /**
+     * Метод выбора товара
+     *
+     * @param productId - номер продукта
+     * @return - выбранный продукт
+     */
     public Product take( int productId)
     {
         Product product = null;
@@ -73,11 +88,11 @@ public class Shop
                     throw new IllegalArgumentException();
             }
         }
-        catch (NoSuchElementException e)
+        catch (NoSuchElementException e) // если больше нет такого товара
         {
             System.out.println("Product out of stock!");
         }
-        catch (IllegalArgumentException e)
+        catch (IllegalArgumentException e) // если выбран продукт не из ассортимента
         {
             System.out.println("No such product!");
         }
@@ -88,17 +103,15 @@ public class Shop
     @Override
     public String toString()
     {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Store={ ");
-        sb.append("\n");
-        sb.append(shelfMilk.toString());
-        sb.append("\n");
-        sb.append(shelfButter.toString());
-        sb.append("\n");
-        sb.append(shelfBread.toString());
-        sb.append("\n");
-        sb.append(shelfHousehold.toString());
-        sb.append("}\n");
-        return sb.toString();
+        return  "Store={ " +
+                "\n" +
+                shelfMilk +
+                "\n" +
+                shelfButter +
+                "\n" +
+                shelfBread +
+                "\n" +
+                shelfHousehold +
+                "}\n";
     }
 }
